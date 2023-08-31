@@ -2,12 +2,12 @@ version: "3.9"
 services:
 
   backend:
-    build: ./apps
+    build: .
     restart: always
     links:
       - db
     ports:
-      - "3000"
+      - "3000:3000"
     volumes:
       - app-data:/app/public/images
 
@@ -17,7 +17,7 @@ services:
     links:
       - phpmyadmin
     ports:
-      - "3306"
+      - "3306:3306"
     environment:
       - MYSQL_ROOT_PASSWORD=password
       - MYSQL_DATABASE=training
@@ -31,7 +31,7 @@ services:
     image: "phpmyadmin"
     restart: always
     ports:
-      - "8000:80"
+      - "8001:80"
     environment:
       - PMA_HOST=db
 
